@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{#zeemaps.desc}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script language="javascript" type="text/javascript" src="../../../wp-includes/js/tinymce/tiny_mce_popup.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../wp-includes/js/utils/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="../../../wp-includes/js/utils/form_utils.js"></script>
+	<script language="javascript" type="text/javascript">
+	function init() {
+		tinyMCEPopup.resizeToInnerSize();
+	}
+
+	function $(x) {
+		return document.getElementById(x);
+	}
+
+	function insertcode() {
+		var code = "[zeemaps ";
+		var mapid = $('zeemapsnumber').value;
+		if (mapid != '') {
+			code += mapid + " ";
+			code += "w=" + $('zeemapsWidth').value + " ";
+			code += "h=" + $('zeemapsHeight').value + " ";
+			var zeemapsoptions = ["search", "legend", "geosearch", "list", "legend", 
+				"shuttered", "nopdf", "add"
+			];
+			for (var o = 0; o < zeemapsoptions.length; o++) {
+				if ($("zeemaps" + zeemapsoptions[o]).checked)
+					code += " " + zeemapsoptions[o] + " ";
+			}
+			code += "]";
+			if (window.tinyMCE) {
+				tinyMCEPopup.editor.execCommand('mceInsertContent', false, code);
+				tinyMCEPopup.editor.execCommand('mceRepaint');
+				tinyMCEPopup.close();
+			}
+		} else {
+			alert(tinyMCEPopup.editor.getLang("zeemaps.nomapnumber",
+				"Please specify a map number")
+			);
+		}
+		return true;
+	 }
+	</script>
+	<base target="_self" />
+</head>
+<body id="link" onload="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';document.getElementById('zeemapsnumber').focus();" style="display:none">
+	<form name="zeemaps" action="#">
+	<div class="panel_wrapper">
+		<!-- iframe panel -->
+		<div id="zeemaps_panel" class="panel current">
+		<table border="0" cellpadding="4" cellspacing="0">
+         <tr>
+            <td nowrap="nowrap"><label for="zeemapsnumber">{#zeemaps.number}</label>
+             <input type="text" id="zeemapsnumber" name="zeemapsnumber"
+				style="width:50px"/>
+            </td>
+            <td nowrap="nowrap"><label for="zeemapsWidth">{#zeemaps.width}</label>
+             <input type="text" id="zeemapsWidth" name="zeemapsWidth"
+				style="width:35px" value="100%"/>
+			</td>
+            <td nowrap="nowrap"><label for="zeemapsHeight">{#zeemaps.height}</label>
+             <input type="text" id="zeemapsHeight" name="zeemapsHeight"
+				style="width:35px" value="500"/>
+            </td>
+          </tr>
+         <tr>
+		    <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapsgeosearch" name="zeemapsgeosearch"/>
+			 <label for="zeemapsgeosearch">{#zeemaps.geosearch}</label>
+            </td>
+            <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapssearch" name="zeemapssearch"/>
+			 <label for="zeemapssearch">{#zeemaps.search}</label>
+            </td>
+		    <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapslegend" name="zeemapslegend"/>
+			 <label for="zeemapslegend">{#zeemaps.legend}</label>
+            </td>
+		 </tr>
+         <tr>
+            <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapslist" name="zeemapslist"/>
+			 <label for="zeemapslist">{#zeemaps.list}</label>
+            </td>
+		    <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapsshuttered" name="zeemapsshuttered"/>
+			 <label for="zeemapsshuttered">{#zeemaps.shuttered}</label>
+            </td>
+		    <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapsnopdf" name="zeemapsnopdf"/>
+			 <label for="zeemapsnopdf">{#zeemaps.nopdf}</label>
+            </td>
+          </tr>
+         <tr>
+            <td nowrap="nowrap">
+             <input type="checkbox" id="zeemapsadd" name="zeemapsadd"/>
+			 <label for="zeemapsadd">{#zeemaps.add}</label>
+            </td>
+		    <td nowrap="nowrap">
+			 &nbsp;
+            </td>
+		    <td nowrap="nowrap">
+			 &nbsp;
+            </td>
+          </tr>
+        </table>
+		</div>
+		<!-- end iframe panel -->
+	</div>
+	<div class="mceActionPanel" style="float:right;">
+	 <input type="button" id="cancel" name="cancel" value="{#cancel}"
+		onclick="tinyMCEPopup.close();" />
+	 <input type="button" id="insert" name="insert" value="{#insert}" 
+		onclick="insertcode();" />
+	</div>
+</form>
+</body>
+</html>
