@@ -48,3 +48,7 @@ This text will be replaced by the map in your blog.
 **Version 1.0.0**
 
 * Initial Release
+
+**Version 1.1**
+
+* Fix button layout
