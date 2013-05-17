@@ -4,7 +4,7 @@ Plugin Name: ZeeMaps
 Plugin URI: http://www.zeemaps.com/wordpress
 Description: Embed an interactive Google Map in your WordPress blog. Create a map in ZeeMaps (http://www.zeemaps.com), customize it with your own markers, regions, etc. Note the map number from your map's URL, use that to publish the map in your blog.
 Author: ZeeMaps
-Version: 1.0
+Version: 1.1
 Author URI: http://www.zeemaps.com
 */
 

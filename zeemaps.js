@@ -34,7 +34,7 @@
 				,author: 'ZeeMaps'
 				,authorurl: 'http://www.zeemaps.com'
 				,infourl: 'http://www.zeemaps.com/wordpress'
-				,version: 1.0
+				,version: 1.1
 			};
 		}
 	});
