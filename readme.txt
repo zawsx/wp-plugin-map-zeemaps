@@ -2,7 +2,7 @@
 Contributors: zeemaps
 Tags: maps, google maps, map
 Requires at least: 2.9.2
-Tested up to: 3.0.1
+Tested up to: 3.5.1
 Stable tag: trunk
 
 Create and customize an interactive Google Map using ZeeMaps and then easily publish it in your blog post.
@@ -48,3 +48,7 @@ This text will be replaced by the map in your blog.
 **Version 1.0.0**
 
 * Initial Release
+
+**Version 1.1**
+
+* Fix button layout
