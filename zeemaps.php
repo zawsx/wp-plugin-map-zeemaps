@@ -2,9 +2,9 @@
 /*
 Plugin Name: ZeeMaps
 Plugin URI: http://www.zeemaps.com/wordpress
-Description: Embed an interactive Google Map in your WordPress blog. Create a map in ZeeMaps (http://www.zeemaps.com), customize it with your own markers, regions, etc. Note the map number from your map's URL, use that to publish the map in your blog.
+Description: Embed an interactive Google Map in your WordPress blog. Create a map in ZeeMaps (http://www.zeemaps.com), customize it with your own markers, regions, etc. Note the map number from your map's URL, use that to publish the map in your blog. The map number is the value of the 'group' parameter in your map's URL.
 Author: ZeeMaps
-Version: 1.1
+Version: 1.2
 Author URI: http://www.zeemaps.com
 */
 
@@ -37,10 +37,10 @@ function zeemaps_put_iframe($matches) {
 	$args = '';
 	$w = '100%';
 	$h = '500';
-	$code = " <iframe src='http://www.zeemaps.com/pub?group=$matches[1]";
+	$code = " <iframe src='//www.zeemaps.com/pub?group=$matches[1]";
 	if (count($matches) === 3) {
-		$options = array("search", "legend", "geosearch", "shuttered", "nopdf", "add",
-			"list"
+		$options = array("search", "legend", "geosearch", "list", "legend",
+			"shuttered", "add", "locate"
 		);
 		$args = $matches[2];
 		foreach ($options as $opt) {
@@ -48,11 +48,20 @@ function zeemaps_put_iframe($matches) {
 				$code .= "&$opt=1";
 			}
 		}
-		if (preg_match("/\bw=([^[\s\]]]+)[\b\]]/i", $args, $m)) {
+		if (preg_match("/\bw=([^\s\]]+)/i", $args, $m)) {
 			$w = $m[1];
 		}
-		if (preg_match("/\bh=([^[\s\]]]+)[\b\]]/i", $args, $m)) {
+		if (preg_match("/\bh=([^\s\]]+)/i", $args, $m)) {
 			$h = $m[1];
+		}
+		if (preg_match("/\bx=([^\s\]]+)/i", $args, $m)) {
+			$code .= "&x=" . $m[1];
+		}
+		if (preg_match("/\by=([^\s\]]+)/i", $args, $m)) {
+			$code .= "&y=" . $m[1];
+		}
+		if (preg_match("/\bz=([^\s\]]+)/i", $args, $m)) {
+			$code .= "&z=" . $m[1];
 		}
 	}
 	$code .= "' width='$w' height='$h' frameborder=0></iframe>";

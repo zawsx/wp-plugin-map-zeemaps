@@ -4,10 +4,11 @@
 		init: function(ed, url) {
 			ed.addCommand('zeemaps', function() {
 				ed.windowManager.open({
-					file:url + '/window.html'
+					file:url + "/window.html?_dc=" + Math.random()
 					,width:400
 					,height:180
 					,inline:1
+					,title:"Embed a ZeeMap"
 				},{
 					plugin_url:url
 				});
@@ -34,7 +35,7 @@
 				,author: 'ZeeMaps'
 				,authorurl: 'http://www.zeemaps.com'
 				,infourl: 'http://www.zeemaps.com/wordpress'
-				,version: 1.1
+				,version: 1.2
 			};
 		}
 	});
