@@ -52,3 +52,7 @@ This text will be replaced by the map in your blog.
 **Version 1.1**
 
 * Fix button layout
+
+**Version 1.2**
+
+* Added x, y, z parameters for centering a map at a given longitude, latitude, and zoom
